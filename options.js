@@ -10,5 +10,4 @@ vocab_selector.addEventListener("change", function(){
   chrome.storage.local.set({'wordlist': wordlist}, function() {
           console.log('Word list is set to ' + wordlist);
         });
-
 })

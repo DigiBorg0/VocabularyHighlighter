@@ -5,6 +5,8 @@
 'use strict';
 
 chrome.runtime.onInstalled.addListener(function() {
-  console.log("loaded!")
+  chrome.storage.local.set({'wordlist': 'magoosh'}, function() {
+          console.log('Word list is set to ' + 'magoosh');
+        });
 
 });
