@@ -12,18 +12,22 @@
         {
         "matches": ["<all_urls>"],
         "js": ["third_party/jquery.js","content.js"],
-        "run_at": "document_end"
+        "run_at": "document_end",
+        "css" : ["css/highlighter.css"]
         }
     ],
-  "page_action": {
-    "default_popup": "popup.html",
-    "default_icon": {
-      "16": "images/get_started16.png",
-      "32": "images/get_started32.png",
-      "48": "images/get_started48.png",
-      "128": "images/get_started128.png"
-    }
-  },
+  "browser_action": {
+         "default_icon": {
+           "16": "images/get_started16.png",
+           "32": "images/get_started32.png",
+           "48": "images/get_started48.png",
+           "128": "images/get_started128.png"
+         },
+         "default_title": "Vocabulary Highlighter",      // optional; shown in tooltip
+         "default_popup": "popup.html"        // optional
+       },
+
+
   "icons": {
     "16": "images/get_started16.png",
     "32": "images/get_started32.png",
