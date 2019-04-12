@@ -29,7 +29,11 @@ function binarySearch (list, value) {
 
 function textNodesUnder(el){
   var n, a=[], walk=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,null,false);
-  while(n=walk.nextNode()) a.push(n);
+  while(n=walk.nextNode()){
+      if (n.tagName!="SCRIPT"){
+        a.push(n);
+      }
+  }
   return a;
 }
 
@@ -37,8 +41,8 @@ function node_needs_to_be_checked(node){
   let node_has_parent = node.parentElement? true:false
   let node_parent_contains_highlighter = node_has_parent?node.parentElement.classList.contains("highlighter"):false
   let node_text_not_all_empty = node.nodeValue.replace(/ /g, "") != "";
-  console.log("has parent")
-  console.log(node_has_parent)
+  //console.log("has parent")
+  //console.log(node_has_parent)
   //console.log(!node_parent_contains_highlighter)
   //console.log(node_text_not_all_empty)
   //console.log((node_has_parent) && (!node_parent_contains_highlighter) && (node_text_not_all_empty))
@@ -52,7 +56,7 @@ function find_key_words_in_node(node, wordlist){
   found_words = []
   var vocabs_with_matching_first_alpha
   word_array.forEach(function(word){
-    //console.log ("word is " + word)
+
     if (word){
       //console.log("word is ok ")
       first_alpha = word[0].toLowerCase()
@@ -62,13 +66,13 @@ function find_key_words_in_node(node, wordlist){
           found_words.push(word)
         }
       } else {
-        console.log("first char is not alpha")
+        //console.log("first char is not alpha")
       }
     } else {
       //console.log("no word")
     }
   })
-  console.log("found key words = " + found_words)
+  //console.log("found key words = " + found_words)
   return found_words.length>0?found_words:undefined
 
 }
@@ -77,7 +81,7 @@ function highlight_text_node_with_found_words(node, found_words){
     found_words.forEach(function(word){
 
       node_text_value = node_text_value.replace(word,`<span class="highlighter highlight-on">${word}</span>`)
-      console.log(node_text_value)
+      //console.log(node_text_value)
     })
     return node_text_value
 
@@ -90,34 +94,28 @@ function run(){
         let wordlist = wordlists[result.wordlist]
         textNodesUnder(document.getElementsByTagName("body")[0]).forEach(function(node){
 
-          console.log(node)
+
+          //console.log(node)
 
           if(node_needs_to_be_checked(node) && (found_words = find_key_words_in_node(node, wordlist))){
-            console.log("node passed check")
+            //console.log("node passed check")
             updated_text_node_value = highlight_text_node_with_found_words(node,found_words)
-            console.log(updated_text_node_value)
-            console.log(node.parentElement)
-            console.log(node.parentElement.innerHTML)
-            console.log(node.nodeValue)
-            // var regex_filter
-            // var re
-            // if (node.nodeValue.split(" ").length==1){
-            //   regex_filter = `(?<=>.*?)(\\b(${node.nodeValue.split(" ")[0]}\\w*)\\b)`
-            //   re = new RegExp(regex_filter, "g");
-            // } else{
-            //   re = node.nodeValue
-            // }
+            //console.log(updated_text_node_value)
+            //console.log(node.parentElement)
+            //console.log(node.parentElement.innerHTML)
+            //console.log(node.nodeValue)
+
             node.parentElement.innerHTML = node.parentElement.innerHTML.replace(node.nodeValue,updated_text_node_value)
-            console.log(node)
+            //console.log(node)
           } else{
-            console.log("node failed check")
+            //console.log("node failed check")
           }
-          console.log("----------------------------------")
+          //console.log("----------------------------------")
         })
     })
 
   } catch(e){
-    console.log(e)
+    //console.log(e)
   }
 
 }
