@@ -11,7 +11,7 @@
   "content_scripts": [
         {
         "matches": ["<all_urls>"],
-        "js": ["third_party/jquery.js","content.js"],
+        "js": ["wordlist.js","content.js"],
         "run_at": "document_end",
         "css" : ["css/highlighter.css"]
         }
