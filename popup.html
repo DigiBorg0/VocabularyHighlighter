@@ -1,17 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <style>
-      button {
-        height: 30px;
-        width: 30px;
-        outline: none;
-      }
-    </style>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/common.min.css">
+    <link rel="stylesheet" type="text/css" href="css/popup.css">
   </head>
   <body>
-    hola
-    <button id="changeColor"></button>
-    <script src="popup.js"></script>
+    <h4>Vocabulary Highlighter Switch</h4>
+    <div id="form">
+      <input type="radio" name="switch" value="on" checked>On<br>
+      <input type="radio" name="switch" value="off">Off<br>
+    </div>
+    <br>
+
+
+
+
+    <div class="footer">
+      &copy; <span id="year"></span> W9G
+      <a id="options-link" href="options.html">Extension Options</a>
+    </div>
+    <script type="text/javascript" src="popup.js"></script>
+
   </body>
 </html>
