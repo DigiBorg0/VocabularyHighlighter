@@ -75,9 +75,8 @@ function find_key_words_in_node(node, wordlist){
 function highlight_text_node_with_found_words(node, found_words){
     node_text_value = node.nodeValue
     found_words.forEach(function(word){
-      var regex_filter = `(?<=>.*?)(\\b(${word}\\w*)\\b)`
-      var re = new RegExp(regex_filter, "g");
-      node_text_value = node_text_value.replace(re,`<span class="highlighter highlight-on">${word}</span>`)
+
+      node_text_value = node_text_value.replace(word,`<span class="highlighter highlight-on">${word}</span>`)
       console.log(node_text_value)
     })
     return node_text_value
@@ -100,15 +99,15 @@ function run(){
             console.log(node.parentElement)
             console.log(node.parentElement.innerHTML)
             console.log(node.nodeValue)
-            var regex_filter
-            var re
-            if (node.nodeValue.split(" ").length==1){
-              regex_filter = `(?<=>.*?)(\\b(${node.nodeValue.split(" ")[0]}\\w*)\\b)`
-              re = new RegExp(regex_filter, "g");
-            } else{
-              re = node.nodeValue
-            }
-            node.parentElement.innerHTML = node.parentElement.innerHTML.replace(re,updated_text_node_value)
+            // var regex_filter
+            // var re
+            // if (node.nodeValue.split(" ").length==1){
+            //   regex_filter = `(?<=>.*?)(\\b(${node.nodeValue.split(" ")[0]}\\w*)\\b)`
+            //   re = new RegExp(regex_filter, "g");
+            // } else{
+            //   re = node.nodeValue
+            // }
+            node.parentElement.innerHTML = node.parentElement.innerHTML.replace(node.nodeValue,updated_text_node_value)
             console.log(node)
           } else{
             console.log("node failed check")
