@@ -1,8 +1,10 @@
+
 wordlists = {
   'magoosh':magoosh,
   'hongbao':ruby,
   'highschool':highschool,
 }
+
 
 function binarySearch (list, value) {
   // initial values for start, middle and end
