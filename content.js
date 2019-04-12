@@ -88,7 +88,7 @@ function run(){
         //console.log(result.wordlist)
         //console.log("node ocunt = "+ textNodesUnder(document.documentElement).length)
         let wordlist = wordlists[result.wordlist]
-        textNodesUnder(document.documentElement).forEach(function(node){
+        textNodesUnder(document.getElementsByTagName("body")[0]).forEach(function(node){
 
           console.log(node)
 
@@ -123,4 +123,4 @@ function run(){
 }
 
 run()
-// setInterval(function(){ run(); }, 5000);
+setInterval(function(){ run(); }, 5000);
