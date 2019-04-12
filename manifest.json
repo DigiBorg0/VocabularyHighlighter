@@ -1,11 +1,11 @@
 {
-  "name": "Getting Started Example",
+  "name": "Vocabulary Highlighter",
   "version": "1.0",
-  "description": "Build an Extension!",
+  "description": "Highlight high frequency GRE vocabulary as you browse the web.",
   "permissions": ["activeTab", "declarativeContent", "storage"],
   "options_page": "options.html",
   "background": {
-    "scripts": ["background.js", "third_party/jquery.js"],
+    "scripts": ["background.js"],
     "persistent": false
   },
   "content_scripts": [
@@ -24,7 +24,7 @@
            "128": "images/icon_128.png"
          },
          "default_title": "Vocabulary Highlighter",
-         "default_popup": "popup.html"       
+         "default_popup": "popup.html"
        },
 
 
