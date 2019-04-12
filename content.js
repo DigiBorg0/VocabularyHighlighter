@@ -1,4 +1,5 @@
 
+
 wordlists = {
   'magoosh':magoosh,
   'hongbao':ruby,
@@ -90,7 +91,12 @@ function highlight_text_node_with_found_words(node, found_words){
 }
 function run(){
   try{
-    chrome.storage.local.get(["wordlist"], function(result){
+    chrome.storage.local.get(["wordlist","switch"], function(result){
+        if (!result.switch){
+          console.log("switch is off")
+          return;
+        }
+        console.log("switch is on")
         //console.log(result.wordlist)
         //console.log("node ocunt = "+ textNodesUnder(document.documentElement).length)
         let wordlist = wordlists[result.wordlist]
@@ -121,6 +127,30 @@ function run(){
   }
 
 }
+
+function processSwitch(status){
+  console.log("message receive = "+status)
+  console.log(status=="on")
+  chrome.storage.local.set({"switch":status=="on"})
+  highlighters = document.getElementsByClassName("highlighter")
+  if (status == "on"){
+    for (i=0; i<highlighters.length;i++){
+      highlighters[i].classList.add("highlight-on")
+
+
+    }
+  } else {
+
+    for (i=0; i<highlighters.length;i++){
+      highlighters[i].classList.remove("highlight-on")
+
+    }
+
+  }
+}
+chrome.runtime.onMessage.addListener(message => {
+    processSwitch(message.switch)
+});
 
 run()
 setInterval(function(){ run(); }, 5000);
