@@ -19,19 +19,22 @@
               <select id="vocabulary-selector">
                 <option value="magoosh">Magoosh's 1000 GRE Words</option>
                 <option value="hongbao">GRE Hong Bao Shu</option>
-                <option value="quizlet">Connect with my Quizlet</option>
+                <!-- <option value="quizlet">Connect with my Quizlet</option> -->
               </select>
             </div>
           </div>
+
         </div>
+
         <div class="option-row">
-          <div class="option-name">Quizlet User ID:</div>
+          <div class="option-name">Quizlet User ID</div>
           <div class="option-value">
             <div class="option-value-primary">
-              <input type="text"  id="popup-dblclick-checkbox">
+              <input type="text"  id="popup-dblclick-checkbox" disabled placeholder="Coming soon...">
             </div>
           </div>
         </div>
+
         <!-- <div class="option-row">
           <div class="option-name">Word history:</div>
           <div class="option-value">
@@ -66,14 +69,19 @@
         </div> -->
         <div class="btn-row">
           <button id="save-btn" class="btn btn-primary" >Save</button>
-          <button id="reset-btn" class="btn btn-default">Reset</button>
-          <span id="save-status">Options saved</span>
+
+          <span id="save-status" style="transition: opacity 0.4s ease-out 0s; opacity: 0;" >Options saved</span>
         </div>
+
+
       </form>
     </div>
     <div class="footer">
-
+      &copy; <span id="year"></span> W9G
+      <a target="_blank" href="https://github.com/jn8029/VocabularyHighlighter">Github</a>
+      <a target="_blank" href="mailto:warren@warrencheng.dev">Email</a>
     </div>
+
 
 
 <script src="options.js"></script>
