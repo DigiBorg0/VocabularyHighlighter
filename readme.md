@@ -30,3 +30,6 @@ Developer information regarding to building a Chrome extension can be found [her
 * add support for linking with Quizlet's vocabulary set.
 * support more vocabulary lists
 * support different highlight colors
+
+
+I also wrote a [post](https://warrencheng.dev/vocabulary-highlighter/) about how I hacked up this extension.
