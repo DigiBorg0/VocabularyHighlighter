@@ -2,7 +2,7 @@
   "name": "Vocabulary Highlighter",
   "version": "1.0",
   "description": "Highlight high frequency GRE vocabulary as you browse the web.",
-  "permissions": ["activeTab", "declarativeContent", "storage"],
+  "permissions": ["activeTab", "storage"],
   "options_page": "options.html",
   "background": {
     "scripts": ["background.js"],

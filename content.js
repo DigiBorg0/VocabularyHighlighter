@@ -6,7 +6,7 @@ wordlists = {
   'highschool':highschool,
 }
 
-
+var last_wordlist;
 function binarySearch (list, value) {
   // initial values for start, middle and end
   let start = 0
@@ -91,7 +91,7 @@ function highlight_text_node_with_found_words(node, found_words){
 }
 function run(){
   try{
-    chrome.storage.local.get(["wordlist","switch"], function(result){
+    chrome.storage.sync.get(["wordlist","switch"], function(result){
         if (!result.switch){
           console.log("switch is off")
           return;
@@ -99,6 +99,13 @@ function run(){
         console.log("switch is on")
         //console.log(result.wordlist)
         //console.log("node ocunt = "+ textNodesUnder(document.documentElement).length)
+        if (last_wordlist!=result.wordlist){
+          old_highlighted = document.getElementsByClassName("highlighter")
+          for (i = 0 ; i<old_highlighted.length;i++){
+            old_highlighted[i].classList.remove("highlighter")
+            old_highlighted[i].classList.remove("highlight-on")
+          }
+        }
         let wordlist = wordlists[result.wordlist]
         textNodesUnder(document.getElementsByTagName("body")[0]).forEach(function(node){
 
@@ -128,12 +135,12 @@ function run(){
 
 }
 
-function processSwitch(status){
-  console.log("message receive = "+status)
-  console.log(status=="on")
-  chrome.storage.local.set({"switch":status=="on"})
+function processSwitch(switch_on){
+
+
+  chrome.storage.sync.set({"switch":switch_on})
   highlighters = document.getElementsByClassName("highlighter")
-  if (status == "on"){
+  if (switch_on){
     for (i=0; i<highlighters.length;i++){
       highlighters[i].classList.add("highlight-on")
 

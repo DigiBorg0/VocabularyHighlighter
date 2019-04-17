@@ -7,7 +7,7 @@
 let vocab_selector = document.getElementById('vocabulary-selector');
 vocab_selector.addEventListener("change", function(){
   let wordlist = vocab_selector.value
-  chrome.storage.local.set({'wordlist': wordlist}, function() {
+  chrome.storage.sync.set({'wordlist': wordlist}, function() {
           console.log('Word list is set to ' + wordlist);
         });
 })
@@ -26,3 +26,7 @@ document.getElementById("save-btn").addEventListener("click",function(e){
   }, 1500);
 
 })
+
+chrome.storage.sync.get(['wordlist'], function(result) {
+        document.getElementById('vocabulary-selector').value = result.wordlist
+  });

@@ -4,7 +4,7 @@
 
 'use strict';
 
-chrome.storage.local.get(["switch"], function(result){
+chrome.storage.sync.get(["switch"], function(result){
   if(result.switch){
     document.getElementById("on-switch").checked=true;
   } else{
@@ -21,7 +21,7 @@ document.getElementsByName("switch").forEach(
       chrome.tabs.query({}, tabs => {
           tabs.forEach(tab => {
           console.log("sending message..."+selected_button)
-          chrome.tabs.sendMessage(tab.id, {"switch":selected_button});
+          chrome.tabs.sendMessage(tab.id, {"switch":selected_button=="on"});
         });
       });
 
