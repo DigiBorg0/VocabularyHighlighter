@@ -1,6 +1,6 @@
 {
   "name": "Vocabulary Highlighter",
-  "version": "1.0",
+  "version": "2.0",
   "description": "Highlight high frequency GRE vocabulary as you browse the web.",
   "permissions": ["activeTab", "storage"],
   "options_page": "options.html",

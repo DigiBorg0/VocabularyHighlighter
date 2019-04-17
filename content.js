@@ -3,7 +3,6 @@
 wordlists = {
   'magoosh':magoosh,
   'hongbao':ruby,
-  'highschool':highschool,
 }
 
 var last_wordlist;
@@ -100,12 +99,17 @@ function run(){
         //console.log(result.wordlist)
         //console.log("node ocunt = "+ textNodesUnder(document.documentElement).length)
         if (last_wordlist!=result.wordlist){
+          console.log("wordlist changed... cleaning up old highlights")
           old_highlighted = document.getElementsByClassName("highlighter")
-          for (i = 0 ; i<old_highlighted.length;i++){
-            old_highlighted[i].classList.remove("highlighter")
-            old_highlighted[i].classList.remove("highlight-on")
+
+          while (old_highlighted.length>0){
+            console.log(old_highlighted.length)
+            console.log(old_highlighted[0].textContent)
+            old_highlighted[0].classList.remove("highlight-on","highlighter")
+
           }
         }
+        last_wordlist = result.wordlist
         let wordlist = wordlists[result.wordlist]
         textNodesUnder(document.getElementsByTagName("body")[0]).forEach(function(node){
 
