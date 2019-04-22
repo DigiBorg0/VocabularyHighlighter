@@ -8,7 +8,7 @@ It currently supports 2 vocabulary lists:
 
 ## Installation (Non-developer)
 
-You can install the extension from Chrome Extension store when it is approved and listed. <strong>Link to be added here</strong>
+You can install the extension from [Chrome Extension Store](https://chrome.google.com/webstore/detail/vocabulary-highlighter/pajikbgjooomggbhdalmlgiimicopmdi)
 
 You can also download Google's [Dictionary Extension](https://chrome.google.com/webstore/detail/google-dictionary-by-goog/mgijmajocgfcbeboacabfgobmjgjcoja) and use it with the highlighted words on the page you browse.
 
